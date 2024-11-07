@@ -1,7 +1,7 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const app = express();
-
+const port = process.env.PORT || 3000;
 // To handle POST request body (if needed)
 app.use(express.json());
 
@@ -45,5 +45,5 @@ app.get("/fetch-clickup", async (req, res) => {
 
 // Start the server
 app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
+  console.log(`Server is running on ${port}`);
 });
