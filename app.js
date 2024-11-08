@@ -7,10 +7,11 @@ app.use(express.json());
 
 // Route to handle the request
 app.get("/fetch-clickup", async (req, res) => {
+  const { code } = req.params;
   try {
     // Make the POST request to the ClickUp API
     const response = await fetch(
-      "https://api.clickup.com/api/v2/oauth/token?client_id=WMJI5VECN2FG0EETI5D1R1DOZJOX139H&client_secret=4CKQU8TJVJEU3HH8RT7LIO3ADWIX7UB9ERARYSM7CWZX2VBBGV9HFW1R76A49CRK&code=S117Q6VYK9SAZGQFE8E5I7XDIYL0QF3X",
+      `https://api.clickup.com/api/v2/oauth/token?client_id=WMJI5VECN2FG0EETI5D1R1DOZJOX139H&client_secret=4CKQU8TJVJEU3HH8RT7LIO3ADWIX7UB9ERARYSM7CWZX2VBBGV9HFW1R76A49CRK&code=${code}`,
       {
         method: "POST",
         headers: {
