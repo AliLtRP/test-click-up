@@ -2,6 +2,7 @@ const express = require("express");
 const fetch = require("node-fetch");
 const app = express();
 const port = process.env.PORT || 3000;
+
 // To handle POST request body (if needed)
 app.use(express.json());
 
@@ -20,13 +21,16 @@ app.get("/fetch-clickup", async (req, res) => {
       }
     );
 
-    console.log(response);
-
     // Check if the response is OK (status 200)
     if (!response.ok) {
       throw new Error(`Request failed with status: ${response.status}`);
     }
 
+    // Parse the response data
+    const data = await response.json();
+    console.log(data);
+
+    // Send the parsed data as a response
     res.status(200).json(data);
   } catch (error) {
     console.error("Error:", error);
@@ -35,6 +39,6 @@ app.get("/fetch-clickup", async (req, res) => {
 });
 
 // Start the server
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 });
