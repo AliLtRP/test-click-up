@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Route to handle the request
 app.get("/fetch-clickup", async (req, res) => {
-  const { code } = req.params;
+  const { code } = req.query;
   try {
     // Make the POST request to the ClickUp API
     const response = await fetch(
